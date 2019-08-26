@@ -20,7 +20,7 @@
   <form class="ui form" method="post" id="change-form" {% if form.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>
     <div class="box box-primary">
       <div class="box-body">
-        {% crispy form %}
+        {% crispy form 'bootstrap3' %}
       </div>
       <div class="box-footer">
         <div class="pull-right">
@@ -29,10 +29,12 @@
             {% trans 'Save' %}
           </button>
         </div>
+        {% if object and admin.urls.delete %}
         <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-modal">
           <i class="fa fa-trash"></i>
           {% trans 'Delete' %}
         </button>
+        {% endif %}
       </div>
     </div>
   </form>

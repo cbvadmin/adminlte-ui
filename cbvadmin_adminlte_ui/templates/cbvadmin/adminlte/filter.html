@@ -13,7 +13,7 @@
       <div class="row">
         {% for field in filter.form %}
         <div class="col-md-4 col-sm-6">
-          {{ field|as_crispy_field }}
+          {{ field|as_crispy_field:'bootstrap3' }}
         </div>
         {% endfor %}
       </div>
