@@ -1,0 +1,30 @@
+{% load crispy_forms_tags i18n %}
+<div class="box box-solid">
+  <div class="box-header with-border">
+    <h3 class="box-title">{% trans 'Filter' %}</h3>
+    <div class="box-tools">
+      <button type="button" class="btn btn-box-tool" data-widget="collapse">
+        <i class="fa fa-minus"></i>
+      </button>
+    </div>
+  </div>
+  <div class="box-body">
+    <form id="filter-form">
+      <div class="row">
+        {% for field in filter.form %}
+        <div class="col-md-4 col-sm-6">
+          {{ field|as_crispy_field }}
+        </div>
+        {% endfor %}
+      </div>
+      <div class="pull-right">
+        <a href="?" class="btn btn-default">
+          {% trans 'Clear' %}
+        </a>
+      </div>
+      <button type="submit" class="btn btn-success">
+        {% trans 'Filter' %}
+      </button>
+    </form>
+  </div>
+</div>

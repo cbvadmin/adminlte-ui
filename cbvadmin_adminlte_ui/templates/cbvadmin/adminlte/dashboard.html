@@ -1,0 +1,25 @@
+{% extends 'cbvadmin/adminlte/base_site.html' %}
+{% block content %}
+{% block content_header %}
+<section class="content-header">
+  <h1>
+    {% block title %}Dashboard{% endblock %}
+  </h1>
+</section>
+{% endblock %}
+
+<section class="content">
+  <div class="row">
+    {% for counter in counters %}
+    <div class="col-lg-3 col-xs-6">
+      <div class="small-box {% cycle 'bg-red' 'bg-yellow' 'bg-aqua' 'bg-blue' 'bg-light-blue' 'bg-green' 'bg-navy' 'bg-teal' 'bg-olive' 'bg-orange' 'bg-purple' 'bg-maroon' as color %}">
+        <div class="inner text-center">
+          <h3>{{ counter.value }}</h3>
+          <p>{{ counter.name|capfirst }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

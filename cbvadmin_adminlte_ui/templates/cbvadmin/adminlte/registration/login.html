@@ -1,0 +1,26 @@
+{% extends 'cbvadmin/adminlte/registration/registration_base.html' %}
+{% load i18n crispy_forms_tags crispy_forms_filters %}
+
+{% block title %}{% trans 'Log in' %}{% endblock %}
+
+{% block content %}
+<div class="login-box">
+  <div class="login-logo">
+    {{ view.admin.site.title }}
+  </div>
+  <div class="login-box-body">
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <input type="hidden" name="next" value="{{ next }}" />
+      {{ form|crispy:'bootstrap3' }}
+      <div class="pull-right">
+        <button type="submit" class="btn btn-primary btn-block btn-flat">{% trans 'Log in' %}</button>
+      </div>
+      <div class="clear-right"></div>
+      <a href="{% url view.admin.urls.password_reset %}">{% trans 'Forgotten your password or username?' %}</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>

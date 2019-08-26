@@ -1,0 +1,31 @@
+{% load static %}
+{% with skin=view.admin.site.skin|default:'blue' %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{{ view.admin.site.title }} | {% block title %}{% endblock %}</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/adminlte/css/adminlte.min.css' %}">
+  <link rel="stylesheet" href="{% static 'vendor/adminlte/css/skins' %}/skin-{{ skin }}.min.css">
+  <link rel="stylesheet" href="{% static 'vendor/adminlte/plugins/iCheck/flat' %}/{{ skin }}.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+{% block extrahead %}{% endblock %}
+</head>
+<body class="hold-transition skin-{{ skin }} sidebar-mini">
+<div class="wrapper">
+{% block outer_content %}{% endblock %}
+</div>
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'vendor/jquery-slimscroll/jquery.slimscroll.min.js' %}"></script>
+<script src="{% static 'vendor/fastclick/fastclick.js' %}"></script>
+<script src="{% static 'vendor/adminlte/js/adminlte.min.js' %}"></script>
+<script src="{% static 'vendor/adminlte/plugins/icheck/icheck.min.js' %}"></script>
+{% block extrascript %}{% endblock %}
+</body>
+</html>
+{% endwith %}

@@ -1,0 +1,35 @@
+<ul class="sidebar-menu" data-widget="tree">
+  <li class="header">MAIN NAVIGATION</li>
+{% for item in menu %}
+{% if item.visible %}
+{% if item.children %}
+  <li class="treeview">
+    <a href="#">
+      {% if item.icon %}<i class="{{ item.icon }} icon"></i>{% endif %}
+      <span>{{ item.title }}</span>
+      <span class="pull-right-container">
+        <i class="fa fa-angle-left pull-right"></i>
+      </span>
+    </a>
+    <ul class="treeview-menu">          
+{% for subitem in item.children %}
+      <li>
+        <a {% if subitem.url %}href="{{ subitem.url }}"{% endif %}>
+          <i class="fa fa-circle-o"></i>
+          {{ subitem.title }}
+        </a>
+      </li>
+{% endfor %}
+    </ul>
+  </li>
+{% elif item.url %}
+  <li>
+    <a href="{{ item.url }}">
+      {% if item.icon %}<i class="{{ item.icon }} icon"></i>{% endif %}
+      <span>{{ item.title }}</span>
+    </a>
+  </li>
+{% endif %}
+{% endif %}
+{% endfor %}
+</ul>

@@ -1,0 +1,62 @@
+{% extends 'cbvadmin/adminlte/base.html' %}
+{% load i18n menu %}
+{% block outer_content %}
+  <header class="main-header">
+    <!-- Logo -->
+    <div class="logo">
+      <span class="logo-mini">{{ view.admin.site.title }}</span>
+      <span class="logo-lg">{{ view.admin.site.title }}</span>
+    </div>
+    <nav class="navbar navbar-static-top">
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <li class="dropdown user user-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class="hidden-xs">{{ request.user }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="user-header" style="height: auto">
+                <p>
+                  {{ request.user }}
+                  <small>{{ request.user.date_joined }}</small>
+                </p>
+              </li>
+              <li class="user-footer">
+                <div class="pull-left">
+                  <a href="{% url 'cbvadmin:accounts:password_change' %}" class="btn btn-default btn-flat">{% trans 'Change password' %}</a>
+                </div>
+                <div class="pull-right">
+                  <a href="{% url 'cbvadmin:accounts:logout' %}" class="btn btn-default btn-flat">{% trans 'Log out' %}</a>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <aside class="main-sidebar">
+    <section class="sidebar">
+      {% generate_menu %}
+      {% with menu=menus.cbvadmin %}
+      {% include 'cbvadmin/adminlte/side_menu.html' %}
+      {% endwith %}
+    </section>
+  </aside>
+  <div class="content-wrapper">
+    {% block content %}
+    {% endblock %}
+  </div>
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <a href="https://adminlte.io">AdminLTE</a> <b>Version</b> 2.4.18-pre
+    </div>
+    <strong>Copyright &copy; 2014-2019</strong> All rights reserved.
+  </footer>
+{% endblock %}

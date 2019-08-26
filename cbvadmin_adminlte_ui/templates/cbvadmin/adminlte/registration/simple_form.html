@@ -1,0 +1,15 @@
+{% extends 'cbvadmin/adminlte/registration/registration_base.html' %}
+{% load i18n crispy_forms_tags crispy_forms_filters %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block outer_content %}
+<div class="login-box">
+  <div class="login-logo">
+    {{ view.admin.site.title }}
+  </div>
+  <div class="login-box-body">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
